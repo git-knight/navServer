@@ -33,7 +33,8 @@ public class ItemsController : ControllerBase
     [HttpGet]
     public async Task<ActionResult<IEnumerable<MeasureValue>>> GetItems()
     {
-        return await _context.Items.ToListAsync();
+        return new MeasureValue[]{new MeasureValue{Id=1, Atm=998.76}};
+        //return await _context.Items.ToListAsync();
     }
 
     // POST: api/items
