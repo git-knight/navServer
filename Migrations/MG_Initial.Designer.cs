@@ -10,7 +10,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MyApi.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240729110752_Initial")]
+    [Migration("20240729171303_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -46,8 +46,8 @@ namespace MyApi.Migrations
                     b.Property<double>("Pressure")
                         .HasColumnType("double precision");
 
-                    b.Property<double>("Time")
-                        .HasColumnType("double precision");
+                    b.Property<long>("Time")
+                        .HasColumnType("bigint");
 
                     b.HasKey("Id");
 

@@ -43,8 +43,8 @@ namespace MyApi.Migrations
                     b.Property<double>("Pressure")
                         .HasColumnType("double precision");
 
-                    b.Property<double>("Time")
-                        .HasColumnType("double precision");
+                    b.Property<long>("Time")
+                        .HasColumnType("bigint");
 
                     b.HasKey("Id");
 
