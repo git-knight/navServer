@@ -12,6 +12,18 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+builder.WebHost.ConfigureKestrel(serverOptions =>
+{
+    serverOptions.ListenAnyIP(5109); // HTTP port
+    /*serverOptions.ListenAnyIP(5110, listenOptions =>
+    {
+        listenOptions.UseHttps("path/to/your/cert.pfx", "your-cert-password"); // HTTPS port
+    });
+*/
+});
+
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
