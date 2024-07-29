@@ -19,5 +19,10 @@ using System.Runtime.InteropServices;
 public class MeasureValue
 {
     public int Id { get; set; }
-    public double Atm { get; set; }
+    public double Time { get; set; }
+    public double Latitude { get; set; }
+    public double Longitude { get; set; }
+    public double Pressure { get; set; }
+    public double Azimuth { get; set; }
+    public double AtAccuracym { get; set; }
 }
