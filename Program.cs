@@ -1,5 +1,7 @@
+using Microsoft.AspNetCore.Server.Kestrel.Https;
 using Microsoft.EntityFrameworkCore;
-using Npgsql.EntityFrameworkCore.PostgreSQL; 
+using Npgsql.EntityFrameworkCore.PostgreSQL;
+using System.Security.Cryptography.X509Certificates;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +19,13 @@ Console.WriteLine($"Connection String: {builder.Configuration.GetConnectionStrin
 builder.WebHost.ConfigureKestrel(serverOptions =>
 {
     serverOptions.ListenAnyIP(5109); // HTTP port
+    serverOptions.ListenAnyIP(5110, listenOptions =>
+    {
+        listenOptions.UseHttps(new HttpsConnectionAdapterOptions
+        {
+            ServerCertificate = new X509Certificate2("./certs/server.crt", "./certs/server.key")
+        });
+    });
     /*serverOptions.ListenAnyIP(5110, listenOptions =>
     {
         listenOptions.UseHttps("path/to/your/cert.pfx", "your-cert-password"); // HTTPS port
