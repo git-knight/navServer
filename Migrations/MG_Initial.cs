@@ -17,7 +17,7 @@ namespace MyApi.Migrations
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Time = table.Column<double>(type: "double precision", nullable: false),
+                    Time = table.Column<long>(type: "bigint", nullable: false),
                     Latitude = table.Column<double>(type: "double precision", nullable: false),
                     Longitude = table.Column<double>(type: "double precision", nullable: false),
                     Pressure = table.Column<double>(type: "double precision", nullable: false),

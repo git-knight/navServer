@@ -19,10 +19,15 @@ using System.Runtime.InteropServices;
 public class MeasureValue
 {
     public int Id { get; set; }
-    public double Time { get; set; }
+    public long Time { get; set; }
     public double Latitude { get; set; }
     public double Longitude { get; set; }
     public double Pressure { get; set; }
     public double Azimuth { get; set; }
     public double AtAccuracym { get; set; }
+
+    public override string ToString()
+    {
+        return DateTime.FromFileTime(Time).ToString("f") + $"{Latitude}:{Longitude}";
+    }
 }
