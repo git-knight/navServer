@@ -19,18 +19,18 @@ Console.WriteLine($"Connection String: {builder.Configuration.GetConnectionStrin
 builder.WebHost.ConfigureKestrel(serverOptions =>
 {
     serverOptions.ListenAnyIP(5109); // HTTP port
-    serverOptions.ListenAnyIP(5110, listenOptions =>
+    /*serverOptions.ListenAnyIP(5110, listenOptions =>
     {
         listenOptions.UseHttps(new HttpsConnectionAdapterOptions
         {
-            ServerCertificate = new X509Certificate2("./certs/server.crt", "./certs/server.key")
+            ServerCertificate = new X509Certificate2("./certs/server.crt")
         });
-    });
-    /*serverOptions.ListenAnyIP(5110, listenOptions =>
+    });//*/
+    serverOptions.ListenAnyIP(5110, listenOptions =>
     {
-        listenOptions.UseHttps("path/to/your/cert.pfx", "your-cert-password"); // HTTPS port
+        listenOptions.UseHttps("certs/server.pfx", ""); // HTTPS port
     });
-*/
+//*/
 });
 
 
