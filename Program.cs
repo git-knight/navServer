@@ -11,6 +11,8 @@ builder.Services.AddSwaggerGen();
 // Register the DbContext with the DI container.
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+Console.WriteLine($"Connection String: {builder.Configuration.GetConnectionString("DefaultConnection")}");
+
 
 builder.WebHost.ConfigureKestrel(serverOptions =>
 {
