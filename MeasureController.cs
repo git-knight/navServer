@@ -34,6 +34,7 @@ public class ItemsController : ControllerBase
     public async Task<ActionResult<IEnumerable<MeasureValue>>> GetItems()
     {
         //return new MeasureValue[] { new() { Id = 1, Atm = 998.76 } };
+        Console.WriteLine($"get all items ({_context.Items.Count()}) {DateTime.Now:g}");
         return await _context.Items.ToListAsync();
     }
 
