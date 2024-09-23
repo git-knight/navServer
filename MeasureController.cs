@@ -56,6 +56,21 @@ public class ItemsController : ControllerBase
         {
             return NotFound();
         }
+        Console.WriteLine($"get item id={item.Id} {DateTime.Now:g}");
         return item;
+    }
+
+    [HttpDelete("{id}")]
+    public async Task<ActionResult<MeasureValue>> DeleteItem(int id)
+    {
+        var item = await _context.Items.FindAsync(id);
+        if (item == null)
+        {
+            return NotFound();
+        }
+        _context.Items.Remove(item);
+        await _context.SaveChangesAsync();
+        Console.WriteLine($"deleted id={item.Id} {DateTime.Now:g}");
+        return Ok(item);
     }
 }
