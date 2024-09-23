@@ -43,6 +43,7 @@ public class ItemsController : ControllerBase
     {
         _context.Items.Add(item);
         await _context.SaveChangesAsync();
+        Console.WriteLine($"new id={item.Id} {DateTime.Now:g}");
         return CreatedAtAction(nameof(GetItem), new { id = item.Id }, item);
     }
 
